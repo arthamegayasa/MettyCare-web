@@ -388,6 +388,36 @@ h1, h2, h3, h4 { line-height: 1.18; font-weight: 800; letter-spacing: -.02em; co
 .step__title { font-size: 1.18rem; margin-bottom: 7px; }
 .step__text { color: var(--muted); font-size: .96rem; }
 
+/* ---------- Pricing (Paket Perawatan) ---------- */
+.pricing { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 940px; margin-inline: auto; }
+.pricing .reveal:nth-child(2) { transition-delay: .08s; }
+.price-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 34px 32px;
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s;
+}
+.price-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--teal-100); }
+.price-card .card__icon { margin-bottom: 18px; }
+.price-card:hover .card__icon { background: var(--teal-600); color: #fff; }
+.price-card__title { font-size: 1.45rem; }
+.price-card__desc { color: var(--muted); font-size: .97rem; margin-top: 7px; }
+.price-card__price {
+  margin: 22px 0;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.price-card__amount { display: block; font-size: 1.75rem; font-weight: 800; color: var(--teal-700); letter-spacing: -.02em; }
+.price-card__note { font-size: .9rem; color: var(--muted); }
+.price-card__list { display: grid; gap: 13px; margin-bottom: 28px; }
+.price-card__list li { display: flex; align-items: flex-start; gap: 11px; font-size: .97rem; color: var(--ink-700); }
+.price-card__list svg { color: var(--teal-600); flex: none; margin-top: 2px; }
+.price-card .btn { margin-top: auto; width: 100%; }
+
 /* ---------- Quotes (Testimoni) ---------- */
 .quote {
   background: var(--paper);
@@ -565,7 +595,7 @@ h1, h2, h3, h4 { line-height: 1.18; font-weight: 800; letter-spacing: -.02em; co
 }
 
 @media (max-width: 720px) {
-  .cards, .cards--3 { grid-template-columns: 1fr; }
+  .cards, .cards--3, .pricing { grid-template-columns: 1fr; }
   .stats__grid { grid-template-columns: repeat(2, 1fr); }
   .stat:nth-child(3)::before, .stat + .stat::before { display: none; }
   .stat:nth-child(2)::after, .stat:nth-child(4)::after { content: ""; position: absolute; left: 0; top: 22%; height: 56%; width: 1px; background: var(--line); }

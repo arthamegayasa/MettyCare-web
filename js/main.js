@@ -82,6 +82,30 @@
       'how.s4.title': 'Perawatan di Rumah',
       'how.s4.text': 'Layanan dilakukan dengan standar profesional dan dipantau secara berkala.',
 
+      'nav.packages': 'Paket',
+      'paket.eyebrow': 'Paket Perawatan',
+      'paket.title': 'Pilih perawatan sesuai kebutuhan',
+      'paket.sub': 'Setiap kondisi berbeda — biaya kami sesuaikan dengan kebutuhan keluarga Anda. Hubungi kami untuk penawaran.',
+      'pkg.price.amount': 'Custom Quote',
+      'pkg.price.note': 'Hubungi kami untuk harga',
+      'pkg.cta': 'Minta Penawaran',
+      'pkg.nurse.title': 'Perawatan dengan Perawat',
+      'pkg.nurse.desc': 'Tindakan medis &amp; keperawatan oleh perawat bersertifikat, langsung di rumah.',
+      'pkg.nurse.f1': 'Pemantauan tanda vital (tensi, suhu, nadi)',
+      'pkg.nurse.f2': 'Perawatan luka &amp; pasca operasi',
+      'pkg.nurse.f3': 'Pemberian obat &amp; injeksi',
+      'pkg.nurse.f4': 'Perawatan infus, kateter &amp; NGT',
+      'pkg.nurse.f5': 'Laporan kondisi berkala',
+      'pkg.nurse.f6': 'Koordinasi dengan dokter',
+      'pkg.caregiver.title': 'Perawatan dengan Caregiver',
+      'pkg.caregiver.desc': 'Pendampingan &amp; bantuan aktivitas harian oleh caregiver terlatih.',
+      'pkg.caregiver.f1': 'Bantuan kebersihan diri (mandi, toilet)',
+      'pkg.caregiver.f2': 'Bantuan makan &amp; minum',
+      'pkg.caregiver.f3': 'Pendampingan mobilitas &amp; aktivitas',
+      'pkg.caregiver.f4': 'Menemani kontrol &amp; rutinitas harian',
+      'pkg.caregiver.f5': 'Pemantauan kondisi umum',
+      'pkg.caregiver.f6': 'Dukungan emosional &amp; teman cerita',
+
       'test.eyebrow': 'Kata Mereka',
       'test.title': 'Dipercaya keluarga Indonesia',
       'test.sub': 'Cerita nyata dari keluarga yang merawat orang tercinta bersama MettyCare.',
@@ -188,6 +212,30 @@
       'how.s4.title': 'Care at Home',
       'how.s4.text': 'Care is delivered to professional standards and monitored regularly.',
 
+      'nav.packages': 'Packages',
+      'paket.eyebrow': 'Care Packages',
+      'paket.title': 'Choose the care that fits your needs',
+      'paket.sub': 'Every condition is different — we tailor the cost to your family’s needs. Contact us for a quote.',
+      'pkg.price.amount': 'Custom Quote',
+      'pkg.price.note': 'Contact us for the price',
+      'pkg.cta': 'Request a Quote',
+      'pkg.nurse.title': 'Nursing Care',
+      'pkg.nurse.desc': 'Medical &amp; nursing procedures by certified nurses, right at home.',
+      'pkg.nurse.f1': 'Vital sign monitoring (BP, temperature, pulse)',
+      'pkg.nurse.f2': 'Wound &amp; post-operative care',
+      'pkg.nurse.f3': 'Medication &amp; injection administration',
+      'pkg.nurse.f4': 'IV, catheter &amp; NGT care',
+      'pkg.nurse.f5': 'Regular condition reports',
+      'pkg.nurse.f6': 'Coordination with the doctor',
+      'pkg.caregiver.title': 'Caregiver Care',
+      'pkg.caregiver.desc': 'Daily companionship &amp; activity assistance by trained caregivers.',
+      'pkg.caregiver.f1': 'Personal hygiene assistance (bathing, toileting)',
+      'pkg.caregiver.f2': 'Help with eating &amp; drinking',
+      'pkg.caregiver.f3': 'Mobility &amp; activity assistance',
+      'pkg.caregiver.f4': 'Accompaniment to checkups &amp; daily routine',
+      'pkg.caregiver.f5': 'General condition monitoring',
+      'pkg.caregiver.f6': 'Emotional support &amp; companionship',
+
       'test.eyebrow': 'What They Say',
       'test.title': 'Trusted by Indonesian families',
       'test.sub': 'Real stories from families caring for their loved ones with MettyCare.',
@@ -237,8 +285,11 @@
   const metaDesc = document.querySelector('meta[name="description"]');
 
   function updateWaLinks(lang) {
-    const url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(WA_MSG[lang] || WA_MSG.id);
-    document.querySelectorAll('.js-wa').forEach((a) => { a.href = url; });
+    document.querySelectorAll('.js-wa').forEach((a) => {
+      const custom = a.getAttribute('data-wa-' + lang);
+      const msg = custom || WA_MSG[lang] || WA_MSG.id;
+      a.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
+    });
   }
 
   function applyLang(lang) {
